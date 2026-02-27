@@ -41,7 +41,9 @@ jobs:
             autoconf \
             automake \
             libtool \
-            pkg-config
+            pkg-config \
+            libltdl-dev \
+            gettext
           sudo apt-get install -y libgstreamer1.0 \
             gstreamer1.0-plugins-base \
             gstreamer1.0-plugins-good
