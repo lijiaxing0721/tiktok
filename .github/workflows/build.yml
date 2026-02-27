@@ -43,14 +43,21 @@ jobs:
             libtool \
             pkg-config \
             libltdl-dev \
-            gettext
-          sudo apt-get install -y libgstreamer1.0 \
+            libffi-dev \
+            libssl-dev \
+            libsqlite3-dev \
+            libreadline-dev \
+            libncursesw5-dev \
+            uuid-dev \
+            libgdbm-dev \
+            libgdbm-compat-dev \
+            libbz2-dev \
+            liblzma-dev \
+            libunwind-dev \
+            libgstreamer1.0-dev \
             gstreamer1.0-plugins-base \
-            gstreamer1.0-plugins-good
-          sudo apt-get install -y \
-            build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev \
-            zlib1g-dev libssl-dev openssl libgdbm-dev libgdbm-compat-dev \
-            liblzma-dev libreadline-dev libncursesw5-dev libffi-dev uuid-dev
+            gstreamer1.0-plugins-good \
+            gettext
 
       - name: Install Buildozer
         run: |
