@@ -37,6 +37,9 @@ android.minapi = 21
 # (str) Android entry point, default is ok for Kivy-based app
 android.entrypoint = org.kivy.android.PythonActivity
 
+# (list) List of Android architectures to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
+android.archs = armeabi-v7a
+
 # (list) List of Java .jar files to add to the libs so that pyjnius can access
 # their classes. Don't add jars that you do not need, since extra jars can slow
 # down the build process. Allows wildcards matching, for example:
