@@ -13,7 +13,7 @@ package.domain = org.test
 source.dir = .
 
 # (str) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py,png,jpg,kv,atlas,ttf
 
 # (str) Application versioning (method 1)
 version = 1.0.0

@@ -7,8 +7,15 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.clock import Clock
 from kivy.utils import platform
+from kivy.core.text import LabelBase
 
 from downloader import DouyinDownloader
+
+# 注册中文字体，解决乱码问题
+# 使用 DroidSansFallback.ttf 作为默认字体
+LabelBase.register(name='Roboto', 
+                   fn_regular='DroidSansFallback.ttf',
+                   fn_bold='DroidSansFallback.ttf')
 
 class DouyinApp(App):
     def build(self):
