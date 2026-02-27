@@ -61,6 +61,9 @@ jobs:
         run: |
           # 自动接受许可协议
           yes | buildozer android debug
+        env:
+          # 强制指定 NDK 版本，避免自动下载不兼容的新版
+          android.ndk: 25b
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4

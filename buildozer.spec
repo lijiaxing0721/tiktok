@@ -68,6 +68,9 @@ fullscreen = 0
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
 
+# (str) Android NDK version to use
+android.ndk = 25b
+
 # (bool) Indicate if the application should be technically debuggable
 # android.debug = True
 
