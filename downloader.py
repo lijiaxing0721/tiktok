@@ -2,6 +2,14 @@ import re
 import os
 import yt_dlp
 
+class MyLogger:
+    def debug(self, msg):
+        pass
+    def warning(self, msg):
+        pass
+    def error(self, msg):
+        pass
+
 class DouyinDownloader:
     def __init__(self, download_dir):
         self.download_dir = download_dir
@@ -31,8 +39,9 @@ class DouyinDownloader:
             'outtmpl': os.path.join(self.download_dir, '%(title)s.%(ext)s'),
             'format': 'best', # 下载最佳质量
             'noplaylist': True,
-            'quiet': True,
+            'quiet': False, # 关闭 quiet 模式以便调试，或者我们需要正确处理日志
             'no_warnings': True,
+            'logger': MyLogger(), # 使用自定义 logger 防止 str object has no attribute write 错误
             # 增加 User-Agent 模拟浏览器
             'http_headers': {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
