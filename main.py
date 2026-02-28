@@ -12,10 +12,14 @@ from kivy.core.text import LabelBase
 from downloader import DouyinDownloader
 
 # 注册中文字体，解决乱码问题
-# 使用 DroidSansFallback.ttf 作为默认字体
+# 使用 NotoSansCJKsc-Regular.otf 作为默认字体，支持中文、英文和符号
+font_path = 'NotoSansCJKsc-Regular.otf'
 LabelBase.register(name='Roboto', 
-                   fn_regular='DroidSansFallback.ttf',
-                   fn_bold='DroidSansFallback.ttf')
+                   fn_regular=font_path,
+                   fn_bold=font_path)
+
+# 定义一个全局字体变量，用于显式指定
+CHINESE_FONT = 'Roboto' # 因为我们已经将 Roboto 替换为中文字体，所以直接用默认的 Roboto 即可，或者用 registered name
 
 class DouyinApp(App):
     def build(self):
@@ -28,7 +32,9 @@ class DouyinApp(App):
         self.url_input = TextInput(
             hint_text="请在此粘贴抖音分享链接...",
             multiline=True,
-            size_hint=(1, 0.3)
+            size_hint=(1, 0.3),
+            font_name=CHINESE_FONT, # 显式指定字体
+            hint_text_color=(0.5, 0.5, 0.5, 1)
         )
         layout.add_widget(self.url_input)
         
@@ -37,7 +43,8 @@ class DouyinApp(App):
             text="等待输入...",
             size_hint=(1, 0.2),
             halign="center",
-            valign="middle"
+            valign="middle",
+            font_name=CHINESE_FONT # 显式指定字体
         )
         self.status_label.bind(size=self.status_label.setter('text_size')) # 确保文本换行
         layout.add_widget(self.status_label)
@@ -46,7 +53,8 @@ class DouyinApp(App):
         self.download_btn = Button(
             text="开始下载",
             size_hint=(1, 0.2),
-            background_color=(0.2, 0.6, 0.8, 1)
+            background_color=(0.2, 0.6, 0.8, 1),
+            font_name=CHINESE_FONT # 显式指定字体
         )
         self.download_btn.bind(on_press=self.start_download)
         layout.add_widget(self.download_btn)

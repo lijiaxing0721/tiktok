@@ -33,7 +33,17 @@ class DouyinDownloader:
             'noplaylist': True,
             'quiet': True,
             'no_warnings': True,
-            # 'restrictfilenames': True, # 暂时保留中文文件名，如果遇到问题再开启
+            # 增加 User-Agent 模拟浏览器
+            'http_headers': {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Referer': 'https://www.douyin.com/',
+                'Accept-Language': 'zh-CN,zh;q=0.9',
+            },
+            'extractor_args': {
+                'douyin': {
+                    'skip_empty_json': [True]
+                }
+            }
         }
 
         try:
@@ -49,7 +59,12 @@ class DouyinDownloader:
                     status_callback(f"下载完成: {title}")
                 return True, f"下载成功: {title}"
         except Exception as e:
-            error_msg = f"下载失败: {str(e)}"
+            error_msg = str(e)
+            if "Fresh cookies" in error_msg:
+                error_msg = "下载失败：抖音风控限制，需要更新 Cookies 或稍后再试。\n(目前此版本无法自动绕过登录验证)"
+            else:
+                error_msg = f"下载失败: {error_msg}"
+            
             if status_callback:
                 status_callback(error_msg)
             return False, error_msg
